@@ -22,7 +22,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Particles className="particles" params={particlesOptions} />
+        <Particles className="particlessometing" params={particlesOptions} />
         <Navigation />
         <Logo />
         <Rank />
