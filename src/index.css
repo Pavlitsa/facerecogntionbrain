@@ -2,5 +2,9 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
-  background: linear-gradient(89deg, rgb(240, 122, 216) 0%, rgb(112, 213, 224) 100%);
+  background: linear-gradient(89deg, rgb(221, 79, 193) 0%, rgb(69, 210, 226) 100%);
+}
+
+button {
+  cursor: pointer;
 }
