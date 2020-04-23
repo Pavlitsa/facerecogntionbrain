@@ -17,10 +17,10 @@ const app = new Clarifai.App({
 const particlesOptions = {
   particles: {
     number: {
-      value: 30,
+      value: 100,
       density: {
         enable: true,
-        value_area: 800,
+        value_area: 500,
       },
     },
   },
@@ -70,7 +70,7 @@ class App extends Component {
     };
   };
 
-  dispayFaceBox = (box) => {
+  displayFaceBox = (box) => {
     this.setState({ box: box });
   };
 
