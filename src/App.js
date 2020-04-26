@@ -10,10 +10,12 @@ import FaceRecognition from "./components/FaceRecognition/FaceRecognition";
 import Signin from "./components/Signin/Signin";
 import Register from "./components/Register/Register";
 
+// face recognition api key
 const app = new Clarifai.App({
   apiKey: "12f10e0265e647a4bfc5b5128c4858a5",
 });
 
+// Patricles design
 const particlesOptions = {
   particles: {
     number: {
@@ -45,6 +47,7 @@ class App extends Component {
     }
   }
 
+  // Loading the user when registering
   loadUser = (data) => {
     this.setState({user: {
       id: data.id,
@@ -55,7 +58,7 @@ class App extends Component {
     }})
   }
 
-
+  // Setting the bounding box around the face
   calculateFaceLocation = (data) => {
     console.log(data);
     const clarifaiFace =
@@ -71,14 +74,20 @@ class App extends Component {
     };
   };
 
+  // Displaying the bounding box around the face
   displayFaceBox = (box) => {
     this.setState({ box: box });
   };
 
+  // When adding an input image
   onInputChange = (event) => {
     this.setState({ input: event.target.value });
   };
 
+  // When cliking 'detect' to enter the image
+  // The API recognizes the face
+  // We fetch the data from the server to see which user submitted the request
+  // And we add one more entry to the entries of the specific user
   onButtonSubmit = () => {
     this.setState({imageUrl: this.state.input});
     app.models
@@ -105,6 +114,7 @@ class App extends Component {
       .catch(err => console.log(err));
   }
 
+  // Defining the route depending on where we are (signed in, signed out etc)
   onRouteChange = (route) => {
     if (route === 'signout') {
       this.setState({isSignedIn: false})
