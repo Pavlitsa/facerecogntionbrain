@@ -9,14 +9,18 @@ class Signin extends React.Component {
     };
   }
 
+  // Depending on the email of the user, we change the state respecitvely
   onEmailChange = (event) => {
     this.setState({ signInEmail: event.target.value });
   };
 
+  // Depending on the password of the user, we change the state respectively
   onPasswordChange = (event) => {
     this.setState({ signInPassword: event.target.value });
   };
 
+  // We use 'fetch' to post the data of the user that is signing in
+  // If the data of the user exists, then we load the user and direct them to the home page
   onSubmitSignIn = () => {
     fetch("http://localhost:5555/signin", {
       method: "post",
@@ -36,6 +40,8 @@ class Signin extends React.Component {
   };
 
   render() {
+    // Because we are using a class component, we can't pass the props as usual, so we put the props in a variable and pass them where necessary
+    // Destructuring so that we don't have to use 'this.props' all the time
     const { onRouteChange } = this.props;
     return (
       <article className="br3 ba b--black-10 mv4 w-100 w-50-m w-25-l mw6 shadow-5 center">
@@ -47,6 +53,8 @@ class Signin extends React.Component {
                 <label className="db fw6 lh-copy f6" htmlFor="email-address">
                   Email
                 </label>
+
+                {/* 'onChange is a built-in method which we use to trigger the change */}
                 <input
                   className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
                   type="email"
@@ -68,6 +76,8 @@ class Signin extends React.Component {
                 />
               </div>
             </fieldset>
+
+            {/* Same with 'onClick. Built-in method for submitting the user data with a click */}
             <div className="">
               <input
                 onClick={this.onSubmitSignIn}
@@ -76,6 +86,8 @@ class Signin extends React.Component {
                 value="Sign in"
               />
             </div>
+
+            {/* Here with 'onClick' we change the route to 'register' */}
             <div className="lh-copy mt3">
               <p
                 onClick={() => onRouteChange("register")}
